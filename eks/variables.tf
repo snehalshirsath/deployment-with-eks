@@ -20,5 +20,5 @@ variable "eks-node-ami" {
 }
 
 variable "eks-node-instance-type" {
-  default = "t2.medium"
+  default = ["t2.medium"]
 }
