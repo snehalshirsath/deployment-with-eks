@@ -6,11 +6,11 @@ variable "eks-vpc-name" {
 }
 
 variable "vpc-cidr-block" {
-    default = "10.0.0.0/16"
+    default = "172.31.0.0/16"
 }
 
 variable "subnet-1-cidr-block" {
-    default = "10.0.0.0/20"
+    default = "172.31.32.0/20"
 }
 
 variable "subnet-1-tag-name" {
@@ -22,7 +22,7 @@ variable "eks-subnet-1-az" {
 }
 
 variable "subnet-2-cidr-block" {
-    default = "10.1.0.0/20"
+    default = "172.31.0.0/20"
 }
 
 variable "subnet-2-tag-name" {
@@ -34,7 +34,7 @@ variable "eks-subnet-2-az" {
 }
 
 variable "subnet-3-cidr-block" {
-    default = "10.2.0.0/20"
+    default = "172.31.16.0/20"
 }
 
 variable "subnet-3-tag-name" {
