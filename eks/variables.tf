@@ -10,3 +10,15 @@ variable "eks-cluster-name" {
 variable "eks-cluster-role-name" {
     default = "eks-cluster-role-attraqt"
 }
+
+variable "eks-ng-name" {
+  default = "eks-ng-attraqt"
+}
+
+variable "eks-node-ami" {
+  default = "ami-0e472ba40eb589f49"
+}
+
+variable "eks-node-instance-type" {
+  default = "['t2.medium']"
+}

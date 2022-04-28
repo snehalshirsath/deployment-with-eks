@@ -3,7 +3,7 @@ resource "aws_subnet" "eks-vpc-subnet-1" {
     cidr_block = var.subnet-1-cidr-block
     availability_zone = var.eks-subnet-1-az
 
-    tags {
+    tags = {
         Name = var.subnet-1-tag-name
     }
 }
@@ -13,7 +13,7 @@ resource "aws_subnet" "eks-vpc-subnet-2" {
     cidr_block = var.subnet-2-cidr-block
     availability_zone = var.eks-subnet-2-az
 
-    tags {
+    tags = {
         Name = var.subnet-2-tag-name
     }
 }
@@ -23,7 +23,7 @@ resource "aws_subnet" "eks-vpc-subnet-3" {
     cidr_block = var.subnet-3-cidr-block
     availability_zone = var.eks-subnet-3-az
 
-    tags {
+    tags = {
         Name = var.subnet-3-tag-name
     }
 }

@@ -40,13 +40,15 @@ resource "aws_iam_role_policy_attachment" "eks-attraqt-node-AmazonEC2ContainerRe
 
 resource "aws_eks_node_group" "eks-ng-attraqt" {
   cluster_name    = aws_eks_cluster.eks-cluster-attraqt.name
-  node_group_name = "eks-ng-attraqt"
-  node_role_arn   = aws_iam_role.attraqt-node.arn
-  subnet_ids      = aws_subnet.attraqt[*].id
+  node_group_name = var.eks-ng-name
+  node_role_arn   = aws_iam_role.eks-attraqt-node.arn
+  subnet_ids      = [var.eks-subnet-id-1, var.eks-subnet-id-2]
+  ami_type        = var.eks-node-ami
+  instance_types  = var.eks-node-instance-type
 
   scaling_config {
     desired_size = 1
-    max_size     = 1
+    max_size     = 2
     min_size     = 1
   }
 
