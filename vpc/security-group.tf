@@ -8,7 +8,7 @@ resource "aws_security_group" "eks-vpc-security-group" {
     from_port   = 0
     to_port     = 0
     protocol    = "-1"
-    cidr_blocks = [var.eks-sg-cidr-blocks]
+    cidr_blocks = var.eks-sg-cidr-blocks
 
   }
 

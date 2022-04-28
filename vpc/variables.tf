@@ -48,3 +48,7 @@ variable "eks-subnet-3-az" {
 variable "eks-cluster-sg-name" {
     default = "eks-cluster-sg-attraqt"
 }
+
+variable "eks-sg-cidr-blocks" {
+    default = ["0.0.0.0/0"]
+}
