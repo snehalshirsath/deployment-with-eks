@@ -5,7 +5,7 @@ variable "eks-vpc-id" {}
 
 variable "image-id" {
     description = "image id for instance"
-    default = "ami-d61027ad"
+    default = "ami-0e472ba40eb589f49"
 }
 
 variable "instance-type" {

@@ -43,7 +43,6 @@ resource "aws_eks_node_group" "eks-ng-attraqt" {
   node_group_name = var.eks-ng-name
   node_role_arn   = aws_iam_role.eks-attraqt-node.arn
   subnet_ids      = [var.eks-subnet-id-1, var.eks-subnet-id-2]
-  ami_type        = var.eks-node-ami
   instance_types  = var.eks-node-instance-type
 
   scaling_config {
