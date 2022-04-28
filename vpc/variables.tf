@@ -50,5 +50,5 @@ variable "eks-cluster-sg-name" {
 }
 
 variable "eks-sg-cidr-blocks" {
-    default = "["0.0.0.0/0"]"
+    default = "['0.0.0.0/0']"
 }

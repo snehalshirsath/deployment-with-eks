@@ -26,5 +26,5 @@ variable "ec2-instance-key-name" {
 }
 
 variable "bastion-host-sg-name" {
-    default = "eks-bastion-host-sg
+    default = "eks-bastion-host-sg"
 }
