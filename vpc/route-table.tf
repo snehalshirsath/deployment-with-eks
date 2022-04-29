@@ -34,7 +34,7 @@ output "rtb-priv2" {
 }
 
 resource "aws_route_table" "bastion-host-ig-rt" {
-  vpc_id = var.eks-vpc-id
+  vpc_id = aws_vpc.eks-vpc-attraqt.id
   
   route {
     cidr_block = "0.0.0.0/0"

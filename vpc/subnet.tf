@@ -26,7 +26,7 @@ resource "aws_subnet" "eks-vpc-subnet-2" {
 #
 
 resource "aws_subnet" "eks-vpc-subnet-3" {
-    vpc_id     = var.eks-vpc-id
+    vpc_id     = aws_vpc.eks-vpc-attraqt.id
     cidr_block = var.subnet-3-cidr-block
     availability_zone = var.eks-subnet-3-az
     map_public_ip_on_launch = true

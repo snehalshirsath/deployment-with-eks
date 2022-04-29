@@ -40,7 +40,7 @@ resource "aws_security_group" "eks-allnodes-sg" {
 resource "aws_security_group" "bastion-ec2-instance-security-group" {
     name        = var.bastion-host-sg-name
     description = "Allow HTTP, HTTPS, and SSH"
-    vpc_id = var.eks-vpc-id
+    vpc_id = aws_vpc.eks-vpc-attraqt.id
 
     // HTTP
     ingress {
