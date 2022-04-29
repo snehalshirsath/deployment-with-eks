@@ -49,3 +49,7 @@ resource "aws_eks_cluster" "eks-cluster-attraqt" {
     aws_iam_role_policy_attachment.eks-attraqt-cluster-AmazonEKSVPCResourceController,
   ]
 }
+
+output "eks-cluster-endpoint" {
+  value = aws_eks_cluster.eks-cluster-attraqt.endpoint
+}

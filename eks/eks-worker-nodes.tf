@@ -57,3 +57,7 @@ resource "aws_eks_node_group" "eks-ng-attraqt" {
     aws_iam_role_policy_attachment.eks-attraqt-node-AmazonEC2ContainerRegistryReadOnly,
   ]
 }
+
+output "eks-cluster-arn" {
+  value = aws_iam_role.eks-attraqt-node.arn
+}
