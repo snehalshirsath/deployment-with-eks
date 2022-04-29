@@ -59,6 +59,6 @@ output "kubeconfig-certificate-authority-data" {
   value = aws_eks_cluster.eks-cluster-attraqt.certificate_authority[0].data
 }
 
-output "eks-cluster-name" {
+output "attreaqt-eks-cluster-name" {
   value=aws_eks_cluster.eks-cluster-attraqt.name
 }
