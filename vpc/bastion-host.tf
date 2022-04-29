@@ -7,7 +7,7 @@ resource "aws_instance" "bastion-host" {
   availability_zone = var.availability-zone
   key_name = var.ec2-instance-key-name
   security_groups = [aws_security_group.bastion-ec2-instance-security-group.id]
-  associate_public_ip_address = true
+  associate_public_ip_address = "true"
 
   tags = {
     Name = var.bastion-ec2-instance

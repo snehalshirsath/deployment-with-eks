@@ -39,8 +39,8 @@ resource "aws_eks_cluster" "eks-cluster-attraqt" {
   role_arn = aws_iam_role.eks-attraqt-cluster.arn
 
   vpc_config {
-    endpoint_private_access = true
-    endpoint_public_access  = false
+    endpoint_private_access = "true"
+    endpoint_public_access  = "false"
     security_group_ids = [var.eks-security-group-id, var.eks-allnodes-sg-id]
     subnet_ids         = [var.eks-subnet-id-1, var.eks-subnet-id-2]
   }
