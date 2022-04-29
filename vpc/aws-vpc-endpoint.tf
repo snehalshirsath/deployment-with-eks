@@ -16,13 +16,9 @@ resource "aws_vpc_endpoint" "ec2" {
     }
   )
   private_dns_enabled = "true"
-  route_table_ids = [
-    aws_route_table.priv-subnet-1-rtb.id,
-    aws_route_table.priv-subnet-2-rtb.id,
-  ]
   security_group_ids = [aws_security_group.eks-vpc-security-group.id]
   service_name       = "com.amazonaws.eu-west-1.ec2"
-  subnet_ids         = []
+  subnet_ids         = [aws_subnet.eks-vpc-subnet-1.id, aws_subnet.eks-vpc-subnet-2.id]
   tags               = {}
   vpc_endpoint_type  = "Interface"
   vpc_id             = aws_vpc.eks-vpc-attraqt.id

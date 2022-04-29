@@ -20,7 +20,7 @@ variable "bastion-ec2-instance" {
 }
 
 variable "ec2-instance-key-name" {
-    default = "attraqt-snehal-aws-key"
+    default = "attraqt-snehal-aws-key-ireland"
 }
 
 variable "bastion-host-sg-name" {
