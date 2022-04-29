@@ -46,9 +46,9 @@ resource "aws_eks_node_group" "eks-ng-attraqt" {
   instance_types  = var.eks-node-instance-type
 
   scaling_config {
-    desired_size = 1
-    max_size     = 2
-    min_size     = 1
+    desired_size = 2
+    max_size     = 3
+    min_size     = 2
   }
 
   depends_on = [

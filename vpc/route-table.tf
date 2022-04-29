@@ -50,3 +50,4 @@ resource "aws_route_table_association" "bastion-host-route-table-association" {
 output "rtb-pub1" {
   value = aws_route_table.bastion-host-ig-rt.id
 }
+

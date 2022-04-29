@@ -1,9 +1,10 @@
 
 resource "aws_instance" "bastion-host" {
+  
+  subnet_id = var.bastion-host-subnet-id
   ami           = var.image-id
   instance_type = var.instance-type
   availability_zone = var.availability-zone
-  subnet_id = aws_subnet.eks-vpc-subnet-3.id
   key_name = var.ec2-instance-key-name
   security_groups = [aws_security_group.bastion-ec2-instance-security-group.id]
   associate_public_ip_address = true
