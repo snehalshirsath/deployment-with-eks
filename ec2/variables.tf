@@ -1,5 +1,5 @@
 
-variable "eks-vpc-subnet-3" {} 
+
 variable "eks-vpc-id" {}
 
 
