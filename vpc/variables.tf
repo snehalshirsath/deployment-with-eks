@@ -1,5 +1,6 @@
 
 variable "bastion-host-ip" {}
+variable "eks-cluster-name-var" {}
 
 variable "eks-vpc-name" {
     default = "eks-vpc-attraqt"
