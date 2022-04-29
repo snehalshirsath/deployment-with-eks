@@ -14,7 +14,7 @@ variable "subnet-1-cidr-block" {
 }
 
 variable "subnet-1-tag-name" {
-    default = "eks-vpc-subnet-1-attraqt"
+    default = "eks-vpc-privsubnet-1-attraqt"
 }
 
 variable "eks-subnet-1-az" {
@@ -26,7 +26,7 @@ variable "subnet-2-cidr-block" {
 }
 
 variable "subnet-2-tag-name" {
-    default = "eks-vpc-subnet-2-attraqt"
+    default = "eks-vpc-privsubnet-2-attraqt"
 }
 
 variable "eks-subnet-2-az" {

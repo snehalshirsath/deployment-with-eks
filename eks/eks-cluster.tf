@@ -40,7 +40,8 @@ resource "aws_eks_cluster" "eks-cluster-attraqt" {
 
   vpc_config {
     endpoint_private_access = true
-    security_group_ids = [var.eks-security-group-id]
+    endpoint_public_access  = false
+    security_group_ids = [var.eks-security-group-id, var.eks-allnodes-sg-id]
     subnet_ids         = [var.eks-subnet-id-1, var.eks-subnet-id-2]
   }
 
@@ -52,4 +53,12 @@ resource "aws_eks_cluster" "eks-cluster-attraqt" {
 
 output "eks-cluster-endpoint" {
   value = aws_eks_cluster.eks-cluster-attraqt.endpoint
+}
+
+output "kubeconfig-certificate-authority-data" {
+  value = aws_eks_cluster.eks-cluster-attraqt.certificate_authority[0].data
+}
+
+output "eks-cluster-name" {
+  value=aws_eks_cluster.eks-cluster-attraqt.name
 }

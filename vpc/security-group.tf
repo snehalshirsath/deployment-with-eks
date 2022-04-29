@@ -27,6 +27,18 @@ resource "aws_security_group_rule" "attraqt-cluster-ingress-workstation-https" {
   type              = "ingress"
 }
 
+resource "aws_security_group" "eks-allnodes-sg" {
+  description = "Communication between all nodes in the cluster"
+  vpc_id      = aws_vpc.eks-vpc-attraqt.id
+  tags = {
+    "Name"   = format("eks-%s-cluster/ClusterSharedNodeSecurityGroup",var.cluster-name)
+    "Label"  = "TF-EKS All Nodes Comms"
+  }
+}
+
+output "eks-allnodes-sg" {
+  value = aws_security_group.eks-allnodes-sg.id
+}
 
 output "security-group-id" {
   value = aws_security_group.eks-vpc-security-group.id
