@@ -6,6 +6,7 @@ provider "aws" {
 module "vpc" {
     source = "./vpc"
 
+    eks-cluster-name = module.eks.eks-cluster-name
     bastion-host-ip  = module.ec2.ec2_global_ips
 }
 
@@ -22,7 +23,6 @@ module "eks" {
 module "ec2" {
     source = "./ec2"
     
-    eks-cluster-name = module.eks.eks-cluster-name
     eks-vpc-id       = module.vpc.id
     eks-vpc-subnet-3 = module.vpc.subnet3-id
 }
