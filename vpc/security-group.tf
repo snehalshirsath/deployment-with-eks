@@ -74,7 +74,7 @@ resource "aws_security_group" "bastion-ec2-instance-security-group" {
     }
 }
 
-output "security-group-id" {
+output "bastion-security-group-id" {
   value = aws_security_group.bastion-ec2-instance-security-group.id
 }
 
