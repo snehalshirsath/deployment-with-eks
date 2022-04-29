@@ -17,8 +17,8 @@ module "eks" {
 
 }
 
-module "ec2" {
-    source = "./ec2"
+#module "ec2" {
+#    source = "./ec2"
     
-    eks-vpc-id               = module.vpc.id
-}
+#    eks-vpc-id               = module.vpc.id
+#}
