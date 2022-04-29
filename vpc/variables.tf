@@ -1,7 +1,6 @@
 
 #variable "bastion-host-sg-id" {}
 
-
 variable "image-id" {
     description = "image id for instance"
     default = "ami-003f91f482a604b6d"

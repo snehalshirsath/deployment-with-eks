@@ -17,10 +17,10 @@ module "eks" {
 
 }
 
-module "ec2" {
-    source = "./ec2"
-    
-    bastion-host-security-group = module.vpc.bastion-security-group-id
-    bastion-host-subnet-id      = module.vpc.subnet3-id
-    eks-vpc-id                  = module.vpc.id
-}
+#module "ec2" {
+#  source = "./ec2"
+  
+#  bastion-host-security-group = module.vpc.bastion-security-group-id
+#  bastion-host-subnet-id      = module.vpc.subnet3-id
+#  eks-vpc-id                  = module.vpc.id
+#}
