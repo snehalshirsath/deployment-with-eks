@@ -1,5 +1,6 @@
 
-variable "bastion-host-ip" {}
+#variable "bastion-host-sg-id" {}
+
 variable "eks-cluster-name" {
     default = "eks-cluster-attraqt"
 }
@@ -34,18 +35,6 @@ variable "subnet-2-tag-name" {
 
 variable "eks-subnet-2-az" {
     default = "eu-west-1b"
-}
-
-variable "subnet-3-cidr-block" {
-    default = "172.31.16.0/20"
-}
-
-variable "subnet-3-tag-name" {
-    default = "eks-vpc-subnet-3-attraqt"
-}
-
-variable "eks-subnet-3-az" {
-    default = "eu-west-1c"
 }
 
 variable "eks-cluster-sg-name" {

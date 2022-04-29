@@ -18,7 +18,7 @@ resource "aws_security_group" "eks-vpc-security-group" {
 }
 
 resource "aws_security_group_rule" "attraqt-cluster-ingress-workstation-https" {
-  cidr_blocks       = [var.subnet-3-cidr-block]
+  cidr_blocks       = "0.0.0.0/0"
   description       = "Allow workstation to communicate with the cluster API Server"
   from_port         = 443
   protocol          = "tcp"

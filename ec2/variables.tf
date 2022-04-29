@@ -28,3 +28,15 @@ variable "ec2-instance-key-name" {
 variable "bastion-host-sg-name" {
     default = "eks-bastion-host-sg"
 }
+
+variable "subnet-3-cidr-block" {
+    default = "172.31.16.0/20"
+}
+
+variable "subnet-3-tag-name" {
+    default = "eks-vpc-subnet-3-attraqt"
+}
+
+variable "eks-subnet-3-az" {
+    default = "eu-west-1c"
+}
