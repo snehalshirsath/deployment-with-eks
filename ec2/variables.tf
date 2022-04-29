@@ -2,7 +2,7 @@
 
 variable "eks-vpc-id" {}
 variable "bastion-host-subnet-id" {}
-
+variable "bastion-host-security-group" {}
 
 variable "image-id" {
     description = "image id for instance"
