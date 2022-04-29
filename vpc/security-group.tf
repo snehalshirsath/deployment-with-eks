@@ -31,7 +31,7 @@ resource "aws_security_group" "eks-allnodes-sg" {
   description = "Communication between all nodes in the cluster"
   vpc_id      = aws_vpc.eks-vpc-attraqt.id
   tags = {
-    "Name"   = format("eks-%s-cluster/ClusterSharedNodeSecurityGroup",var.cluster-name)
+    "Name"   = format("eks-%s-cluster/ClusterSharedNodeSecurityGroup",var.eks-cluster-name)
     "Label"  = "TF-EKS All Nodes Comms"
   }
 }

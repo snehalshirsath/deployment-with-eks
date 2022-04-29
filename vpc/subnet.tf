@@ -6,7 +6,7 @@ resource "aws_subnet" "eks-vpc-subnet-1" {
 
     tags = tomap({
         "Name" = "${var.subnet-1-tag-name}",
-        "kubernetes.io/cluster/${var.eks-cluster-name-var}" = "shared",
+        "kubernetes.io/cluster/${var.eks-cluster-name}" = "shared",
     })
 }
 
@@ -18,7 +18,7 @@ resource "aws_subnet" "eks-vpc-subnet-2" {
 
     tags = tomap({
         "Name" = "${var.subnet-2-tag-name}",
-        "kubernetes.io/cluster/${var.eks-cluster-name-var}" = "shared",
+        "kubernetes.io/cluster/${var.eks-cluster-name}" = "shared",
     })
 }
 

@@ -5,8 +5,7 @@ provider "aws" {
 
 module "vpc" {
     source = "./vpc"
-
-    eks-cluster-name-var = module.eks.attreaqt-eks-cluster-name
+    
     bastion-host-ip  = module.ec2.ec2_global_ips
 }
 
