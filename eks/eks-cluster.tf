@@ -57,7 +57,7 @@ resource "kubernetes_config_map" "aws_auth_configmap" {
     name      = "aws-auth"
     namespace = "kube-system"
   }
-  data {
+  data = {
     mapRoles = <<YAML
 - rolearn: ${aws_iam_role.eks-attraqt-node.arn}
   username: system:node:{{EC2PrivateDNSName}}
