@@ -73,26 +73,6 @@ resource "aws_eks_addon" "eks-vpc-cni" {
   addon_name   = "vpc-cni"
 }
 
-resource "kubernetes_config_map" "aws_auth_configmap" {
-  metadata {
-    name      = "aws-auth"
-    namespace = "kube-system"
-  }
-  data = {
-    mapRoles = <<YAML
-- rolearn: ${aws_iam_role.eks-attraqt-node.arn}
-  username: system:node:{{EC2PrivateDNSName}}
-  groups:
-    - system:bootstrappers
-    - system:nodes
-- rolearn: ${aws_iam_role.eks-attraqt-cluster.arn}
-  username: kubectl-access-user
-  groups:
-    - system:masters
-YAML
-  }
-}
-
 data "tls_certificate" "eks-cluster-tls" {
   url = aws_eks_cluster.eks-cluster-attraqt.identity[0].oidc[0].issuer
 }
