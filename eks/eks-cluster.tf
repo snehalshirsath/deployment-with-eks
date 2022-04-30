@@ -133,11 +133,6 @@ data "aws_iam_policy_document" "eks-attraqt-assume-role-policy" {
 #  name               = "eks-iam-service-account-role"
 #}
 
-resource "aws_iam_role_policy_attachment" "eks-vpc-cni-attachment" {
-  policy_arn = data.aws_iam_policy_document.eks-attraqt-assume-role-policy.json
-  role       = aws_iam_role.eks-attraqt-cluster.name
-}
-
 
 output "kubeconfig-certificate-authority-data" {
   value = aws_eks_cluster.eks-cluster-attraqt.certificate_authority[0].data
