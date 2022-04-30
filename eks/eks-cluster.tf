@@ -19,8 +19,7 @@ resource "aws_iam_role" "eks-attraqt-cluster" {
       "Action": "sts:AssumeRole"
     }
   ]
-},
-${data.aws_iam_policy_document.eks-attraqt-assume-role-policy.json}
+}
 POLICY
 }
 
@@ -119,6 +118,16 @@ data "aws_iam_policy_document" "eks-attraqt-assume-role-policy" {
       type        = "Federated"
     }
   }
+}
+
+resource "aws_iam_policy" "iam-policy" {
+  name   = "aws-openid-policy"
+  policy = data.aws_iam_policy_document.eks-attraqt-assume-role-policy.json
+}
+
+resource "aws_iam_role_policy_attachment" "example" {
+  policy_arn = aws_iam_policy.iam-policy.arn
+  role       = aws_iam_role.eks-attraqt-cluster.name
 }
 
 #resource "aws_iam_role" "eks-vcp-cni-role" {
