@@ -1,9 +1,15 @@
 
 resource "aws_route_table" "priv-subnet-1-rtb" {
-  propagating_vgws = []
-  route            = []
-  tags             = {}
-  vpc_id           = aws_vpc.eks-vpc-attraqt.id
+  route {
+    cidr_block      = "0.0.0.0/0"
+    nat_gateway_id  = aws_nat_gateway.eks-nat-subnet1.id
+  }
+
+  tags = {
+    Name            = "subnet1-rt"
+  }
+
+  vpc_id            = aws_vpc.eks-vpc-attraqt.id
 }
 
 resource "aws_route_table_association" "priv-subnet-1-rtbassoc" {
@@ -17,9 +23,15 @@ output "rtb-priv1" {
 }
 
 resource "aws_route_table" "priv-subnet-2-rtb" {
-  propagating_vgws = []
-  route            = []
-  tags             = {}
+  route {
+    cidr_block      = "0.0.0.0/0"
+    nat_gateway_id  = aws_nat_gateway.eks-nat-subnet2.id
+  }
+  
+  tags = {
+    Name            = "subnet2-rt"
+  }
+
   vpc_id           = aws_vpc.eks-vpc-attraqt.id
 }
 
