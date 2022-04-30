@@ -35,7 +35,7 @@ resource "aws_iam_role_policy_attachment" "eks-attraqt-cluster-AmazonEKSVPCResou
   role       = aws_iam_role.eks-attraqt-cluster.name
 }
 
-resource "aws_iam_role_policy_attachment" "eks-vpc-cni-attachment" {
+resource "aws_iam_role_policy_attachment" "eks-vpc-cni-AmazonEKS_CNI_Policy" {
   policy_arn = "arn:aws:iam::aws:policy/AmazonEKS_CNI_Policy"
   role       = aws_iam_role.eks-attraqt-cluster.name
 }
