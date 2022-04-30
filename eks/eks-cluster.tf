@@ -44,8 +44,8 @@ resource "aws_iam_role_policy_attachment" "eks-vpc-cni-AmazonEKS_CNI_Policy" {
 #
 resource "aws_eks_cluster" "eks-cluster-attraqt" {
   name     = var.eks-cluster-name
-  role_arn = [aws_iam_role.eks-attraqt-cluster.arn, aws_iam_role.eks-service-iam.arn]
-
+  role_arn = aws_iam_role.eks-attraqt-cluster.arn
+  
   vpc_config {
     endpoint_private_access = "true"
     endpoint_public_access  = "false"
@@ -56,7 +56,8 @@ resource "aws_eks_cluster" "eks-cluster-attraqt" {
   depends_on = [
     aws_iam_role_policy_attachment.eks-attraqt-cluster-AmazonEKSClusterPolicy,
     aws_iam_role_policy_attachment.eks-attraqt-cluster-AmazonEKSVPCResourceController,
-    aws_iam_role_policy_attachment.eks-vpc-cni-attachment,
+    aws_iam_role_policy_attachment.eks-vpc-cni-AmazonEKS_CNI_Policy,
+    aws_iam_role_policy_attachment.openid-eks-provider,
   ]
 }
 
@@ -125,7 +126,7 @@ resource "aws_iam_policy" "iam-policy" {
   policy = data.aws_iam_policy_document.eks-attraqt-assume-role-policy.json
 }
 
-resource "aws_iam_role_policy_attachment" "example" {
+resource "aws_iam_role_policy_attachment" "openid-eks-provider" {
   policy_arn = aws_iam_policy.iam-policy.arn
   role       = aws_iam_role.eks-attraqt-cluster.name
 }
