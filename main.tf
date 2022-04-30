@@ -14,6 +14,8 @@ module "eks" {
     eks-allnodes-sg-id         = module.vpc.eks-allnodes-sg
     eks-subnet-id-1            = module.vpc.subnet1-id
     eks-subnet-id-2            = module.vpc.subnet2-id
+    eks-cluster-endpoint       = module.eks.eks-cluster-endpoint
+    attreaqt-eks-cluster-name  = module.eks.attreaqt-eks-cluster-name
 
 }
 

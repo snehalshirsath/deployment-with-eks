@@ -51,6 +51,27 @@ resource "aws_eks_cluster" "eks-cluster-attraqt" {
   ]
 }
 
+
+resource "kubernetes_config_map" "aws_auth_configmap" {
+  metadata {
+    name      = "aws-auth"
+    namespace = "kube-system"
+  }
+data {
+    mapRoles = <<YAML
+- rolearn: ${aws_iam_role.eks-attraqt-node.arn}
+  username: system:node:{{EC2PrivateDNSName}}
+  groups:
+    - system:bootstrappers
+    - system:nodes
+- rolearn: ${aws_iam_role.eks-attraqt-cluster.arn}
+  username: kubectl-access-user
+  groups:
+    - system:masters
+YAML
+  }
+}
+
 output "eks-cluster-endpoint" {
   value = aws_eks_cluster.eks-cluster-attraqt.endpoint
 }
