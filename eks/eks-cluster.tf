@@ -19,7 +19,8 @@ resource "aws_iam_role" "eks-attraqt-cluster" {
       "Action": "sts:AssumeRole"
     }
   ]
-}
+},
+${data.aws_iam_policy_document.eks-attraqt-assume-role-policy.json}
 POLICY
 }
 
@@ -34,12 +35,17 @@ resource "aws_iam_role_policy_attachment" "eks-attraqt-cluster-AmazonEKSVPCResou
   role       = aws_iam_role.eks-attraqt-cluster.name
 }
 
+resource "aws_iam_role_policy_attachment" "eks-vpc-cni-attachment" {
+  policy_arn = "arn:aws:iam::aws:policy/AmazonEKS_CNI_Policy"
+  role       = aws_iam_role.eks-attraqt-cluster.name
+}
+
 #
 # eks cluster resource
 #
 resource "aws_eks_cluster" "eks-cluster-attraqt" {
   name     = var.eks-cluster-name
-  role_arn = aws_iam_role.eks-attraqt-cluster.arn
+  role_arn = [aws_iam_role.eks-attraqt-cluster.arn, aws_iam_role.eks-service-iam.arn]
 
   vpc_config {
     endpoint_private_access = "true"
@@ -51,6 +57,7 @@ resource "aws_eks_cluster" "eks-cluster-attraqt" {
   depends_on = [
     aws_iam_role_policy_attachment.eks-attraqt-cluster-AmazonEKSClusterPolicy,
     aws_iam_role_policy_attachment.eks-attraqt-cluster-AmazonEKSVPCResourceController,
+    aws_iam_role_policy_attachment.eks-vpc-cni-attachment,
   ]
 }
 
@@ -60,6 +67,11 @@ output "attraqt-eks-cluster-name" {
 
 output "eks-cluster-endpoint" {
   value = aws_eks_cluster.eks-cluster-attraqt.endpoint
+}
+
+resource "aws_eks_addon" "eks-vpc-cni" {
+  cluster_name = aws_eks_cluster.eks-cluster-attraqt.name
+  addon_name   = "vpc-cni"
 }
 
 resource "kubernetes_config_map" "aws_auth_configmap" {
@@ -109,9 +121,21 @@ data "aws_iam_policy_document" "eks-attraqt-assume-role-policy" {
   }
 }
 
-resource "aws_iam_role" "eks-service-iam" {
-  assume_role_policy = data.aws_iam_policy_document.eks-attraqt-assume-role-policy.json
-  name               = "eks-iam-service-account-role"
+#resource "aws_iam_role" "eks-vcp-cni-role" {
+#  assume_role_policy = data.aws_iam_policy_document.example_assume_role_policy.json
+#  name               = "eks-vpc-cni-role"
+#}
+
+
+
+#resource "aws_iam_role" "eks-service-iam" {
+#  assume_role_policy = data.aws_iam_policy_document.eks-attraqt-assume-role-policy.json
+#  name               = "eks-iam-service-account-role"
+#}
+
+resource "aws_iam_role_policy_attachment" "eks-vpc-cni-attachment" {
+  policy_arn = data.aws_iam_policy_document.eks-attraqt-assume-role-policy.json
+  role       = aws_iam_role.eks-attraqt-cluster.name
 }
 
 
