@@ -57,7 +57,6 @@ resource "aws_eks_cluster" "eks-cluster-attraqt" {
     aws_iam_role_policy_attachment.eks-attraqt-cluster-AmazonEKSClusterPolicy,
     aws_iam_role_policy_attachment.eks-attraqt-cluster-AmazonEKSVPCResourceController,
     aws_iam_role_policy_attachment.eks-vpc-cni-AmazonEKS_CNI_Policy,
-    aws_iam_role_policy_attachment.openid-eks-provider,
   ]
 }
 
@@ -103,9 +102,6 @@ resource "aws_iam_openid_connect_provider" "eks-iam-connect-provider" {
   thumbprint_list = [data.tls_certificate.eks-cluster-tls.certificates[0].sha1_fingerprint]
   url             = aws_eks_cluster.eks-cluster-attraqt.identity[0].oidc[0].issuer
 
-  depends_on = [ 
-    tls_certificate.eks-cluster-tls,
-  ]
 }
 
 data "aws_iam_policy_document" "eks-attraqt-assume-role-policy" {
@@ -123,28 +119,6 @@ data "aws_iam_policy_document" "eks-attraqt-assume-role-policy" {
       type        = "Federated"
     }
   }
-
-  depends_on = [ 
-    aws_iam_openid_connect_provider.eks-iam-connect-provider,
-  ]
-}
-
-resource "aws_iam_policy" "iam-policy" {
-  name   = "aws-openid-policy"
-  policy = data.aws_iam_policy_document.eks-attraqt-assume-role-policy.json
-
-  depends_on = [ 
-    aws_iam_policy_document.eks-attraqt-assume-role-policy,
-  ]
-}
-
-resource "aws_iam_role_policy_attachment" "openid-eks-provider" {
-  policy_arn = aws_iam_policy.iam-policy.arn
-  role       = aws_iam_role.eks-attraqt-cluster.name
-
-  depends_on = [ 
-    aws_iam_policy.iam-policy,
-  ]
 }
 
 #resource "aws_iam_role" "eks-vcp-cni-role" {
