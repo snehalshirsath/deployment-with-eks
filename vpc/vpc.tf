@@ -15,7 +15,7 @@ resource "aws_nat_gateway" "eks-nat-subnet1" {
   
 }
 
-resource "aws_nat_gateway" "eks-nat-subnet1" {
+resource "aws_nat_gateway" "eks-nat-subnet2" {
   connectivity_type = "private"
   subnet_id         = aws_subnet.eks-vpc-subnet-2.id
 }
