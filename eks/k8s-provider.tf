@@ -4,7 +4,7 @@ data "aws_eks_cluster_auth" "cluster_auth" {
 }
 
 data "aws_eks_cluster" "eks-cluster-attraqt" {
-  name = "eks-cluster-attraqt"
+  name = aws_eks_cluster.eks-cluster-attraqt.name
 }
 
 provider "kubernetes" {
