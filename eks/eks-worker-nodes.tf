@@ -19,6 +19,10 @@ resource "aws_iam_role" "eks-attraqt-node" {
   })
 }
 
+output "eks-cluster-arn" {
+  value = aws_iam_role.eks-attraqt-node.arn
+}
+
 resource "aws_iam_role_policy_attachment" "eks-attraqt-node-AmazonEKSWorkerNodePolicy" {
   policy_arn = "arn:aws:iam::aws:policy/AmazonEKSWorkerNodePolicy"
   role       = aws_iam_role.eks-attraqt-node.name
@@ -54,6 +58,3 @@ resource "aws_eks_node_group" "eks-ng-attraqt" {
   ]
 }
 
-output "eks-cluster-arn" {
-  value = aws_iam_role.eks-attraqt-node.arn
-}
