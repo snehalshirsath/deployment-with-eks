@@ -27,10 +27,6 @@ resource "aws_security_group_rule" "attraqt-cluster-ingress-workstation-https" {
   type              = "ingress"
 }
 
-data "aws_prefix_list" "ec2" {
-  prefix_list_id = aws_vpc_endpoint.ec2.prefix_list_id
-}
-
 resource "aws_security_group" "eks-allnodes-sg" {
   description = "Communication between all nodes in the cluster"
   vpc_id      = aws_vpc.eks-vpc-attraqt.id
@@ -40,7 +36,6 @@ resource "aws_security_group" "eks-allnodes-sg" {
     to_port         = 0
     protocol        = "-1"
     cidr_blocks      = ["0.0.0.0/0"]
-    prefix_list_ids = [data.aws_vpc_endpoint.ec2.prefix_list_id]
   }
 
   tags = {
