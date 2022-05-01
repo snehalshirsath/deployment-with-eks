@@ -36,7 +36,7 @@ resource "aws_security_group" "eks-allnodes-sg" {
     to_port         = 0
     protocol        = "-1"
     cidr_blocks      = ["0.0.0.0/0"]
-    prefix_list_ids = [aws_vpc_endpoint.ec2.id]
+    prefix_list_ids = [aws_vpc_endpoint.ec2.prefix_list_id]
   }
 
   tags = {
