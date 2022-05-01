@@ -81,3 +81,11 @@ variable "eks-cluster-sg-name" {
 variable "eks-sg-cidr-blocks" {
     default = ["0.0.0.0/0"]
 }
+
+variable "subnet-4-cidr-block" {
+    default = "10.0.3.0/24"
+}
+
+variable "subnet-4-tag-name" {
+  default = "eks=vpc-pubsubnet-attraqt"
+}
