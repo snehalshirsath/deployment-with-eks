@@ -30,8 +30,17 @@ resource "aws_security_group_rule" "attraqt-cluster-ingress-workstation-https" {
 resource "aws_security_group" "eks-allnodes-sg" {
   description = "Communication between all nodes in the cluster"
   vpc_id      = aws_vpc.eks-vpc-attraqt.id
+
+  egress {
+    from_port       = 0
+    to_port         = 0
+    protocol        = "-1"
+    cidr_blocks      = ["0.0.0.0/0"]
+    prefix_list_ids = [aws_nat_gateway.eks-nat-subnet1.id, aws_nat_gateway.eks-nat-subnet2.id]
+  }
+
   tags = {
-    "Name"   = format("eks-%s-cluster/ClusterSharedNodeSecurityGroup",var.eks-cluster-name)
+    "Name"   = format("eks-%s-cluster/ClusterSharedNodeSecurityGroup", var.eks-cluster-name)
     "Label"  = "TF-EKS All Nodes Comms"
   }
 }
