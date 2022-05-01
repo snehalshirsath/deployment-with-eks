@@ -51,6 +51,9 @@ resource "aws_eks_node_group" "eks-ng-attraqt" {
     min_size     = 2
   }
 
+provider "kubernetes" {
+        config_path = "~/.kube/config"
+    }
   
 data "aws_ecr_authorization_token" "token" {
 }
