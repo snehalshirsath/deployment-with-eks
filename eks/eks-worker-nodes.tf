@@ -46,6 +46,12 @@ resource "aws_iam_role_policy_attachment" "eks-attraqt-node-AmazonEC2ContainerRe
   role       = aws_iam_role.eks-attraqt-node.name
 }
 
+resource "aws_iam_role_policy_attachment" "eks-attraqt-node-AmazonEC2ContainerRegistryFullAccess" {
+  policy_arn = "arn:aws:iam::aws:policy/AmazonEC2ContainerRegistryFullAccess"
+  role       = aws_iam_role.eks-attraqt-node.name
+}
+
+
 resource "aws_eks_node_group" "eks-ng-attraqt" {
   cluster_name    = aws_eks_cluster.eks-cluster-attraqt.name
   node_group_name = var.eks-ng-name
@@ -59,37 +65,11 @@ resource "aws_eks_node_group" "eks-ng-attraqt" {
     min_size     = 2
   }
 
-provider "kubernetes" {
-        config_path = "~/.kube/config"
-    }
-  
-data "aws_ecr_authorization_token" "token" {
-}
-
-resource "kubernetes_secret" "docker" {
-  metadata {
-    name      = "docker-cfg"
-    namespace = "kube-system"
-  }
-
-  data = {
-    ".dockerconfigjson" = jsonencode({
-      auths = {
-        "${data.aws_ecr_authorization_token.token.proxy_endpoint}" = {
-          auth = "${data.aws_ecr_authorization_token.token.authorization_token}"
-        }
-      }
-    })
-  }
-
-  type = "kubernetes.io/dockerconfigjson"
-}
-
   depends_on = [
-    kubernetes_secret.docker,
     aws_iam_role_policy_attachment.eks-attraqt-node-AmazonEKSWorkerNodePolicy,
     aws_iam_role_policy_attachment.eks-attraqt-node-AmazonEKS_CNI_Policy,
     aws_iam_role_policy_attachment.eks-attraqt-node-AmazonEC2ContainerRegistryReadOnly,
+    aws_iam_role_policy_attachment.eks-attraqt-node-AmazonEC2ContainerRegistryFullAccess,
   ]
 }
 
