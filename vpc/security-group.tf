@@ -4,6 +4,7 @@ resource "aws_security_group" "eks-vpc-security-group" {
   description = "Cluster communication with worker nodes"
   vpc_id      = aws_vpc.eks-vpc-attraqt.id
 
+
   egress {
     from_port   = 0
     to_port     = 0
@@ -30,6 +31,14 @@ resource "aws_security_group_rule" "attraqt-cluster-ingress-workstation-https" {
 resource "aws_security_group" "eks-allnodes-sg" {
   description = "Communication between all nodes in the cluster"
   vpc_id      = aws_vpc.eks-vpc-attraqt.id
+
+  ingress {
+    description      = "TLS from VPC"
+    from_port        = 443
+    to_port          = 443
+    protocol         = "tcp"
+    cidr_blocks      = [var.vpc-cidr-block]
+  }
 
   egress {
     from_port       = 0

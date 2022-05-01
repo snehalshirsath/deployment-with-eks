@@ -25,7 +25,7 @@ output "rtb-priv1" {
 resource "aws_route_table" "priv-subnet-2-rtb" {
   route {
     cidr_block      = "0.0.0.0/0"
-    nat_gateway_id  = aws_nat_gateway.eks-nat-subnet2.id
+    nat_gateway_id  = aws_nat_gateway.eks-nat-subnet1.id
   }
   
   tags = {

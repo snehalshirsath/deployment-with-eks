@@ -11,15 +11,8 @@ resource "aws_vpc" "eks-vpc-attraqt" {
 
 resource "aws_nat_gateway" "eks-nat-subnet1" {
   connectivity_type = "public"
-  subnet_id         = aws_subnet.eks-vpc-subnet-1.id
+  subnet_id         = aws_subnet.eks-vpc-subnet-4.id
   
-  depends_on = [aws_internet_gateway.bastion-host-internet-gateway]
-}
-
-resource "aws_nat_gateway" "eks-nat-subnet2" {
-  connectivity_type = "public"
-  subnet_id         = aws_subnet.eks-vpc-subnet-2.id
-
   depends_on = [aws_internet_gateway.bastion-host-internet-gateway]
 }
 
