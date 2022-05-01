@@ -3,14 +3,6 @@
 #  * IAM role allowing Kubernetes actions to access other AWS services
 #  * EKS Node Group to launch worker nodes
 #
-terraform {
-      required_providers {
-        kubernetes = {
-          source  = "hashicorp/kubernetes"
-          version = ">= 2.0.0"
-        }
-      }
-    }
 
 resource "aws_iam_role" "eks-attraqt-node" {
   name = "eks-attraqt-node-iam-role"
