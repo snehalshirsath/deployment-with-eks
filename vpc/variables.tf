@@ -28,7 +28,7 @@ variable "bastion-host-sg-name" {
 }
 
 variable "subnet-3-cidr-block" {
-    default = "172.31.16.0/20"
+    default = "10.0.2.0/24"
 }
 
 variable "subnet-3-tag-name" {
@@ -48,11 +48,11 @@ variable "eks-vpc-name" {
 }
 
 variable "vpc-cidr-block" {
-    default = "172.31.0.0/16"
+    default = "10.0.0.0/16"
 }
 
 variable "subnet-1-cidr-block" {
-    default = "172.31.32.0/20"
+    default = "10.0.0.0/24"
 }
 
 variable "subnet-1-tag-name" {
@@ -64,7 +64,7 @@ variable "eks-subnet-1-az" {
 }
 
 variable "subnet-2-cidr-block" {
-    default = "172.31.0.0/20"
+    default = "10.0.1.0/24"
 }
 
 variable "subnet-2-tag-name" {
