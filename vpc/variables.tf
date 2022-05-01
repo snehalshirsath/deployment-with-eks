@@ -1,5 +1,4 @@
 
-variable "eks-cluster-iam-role-name" {}
 
 variable "image-id" {
     description = "image id for instance"
