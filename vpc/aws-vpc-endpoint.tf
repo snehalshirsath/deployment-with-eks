@@ -15,7 +15,7 @@ resource "aws_vpc_endpoint" "ec2" {
       Version = "2008-10-17"
     }
   )
-  private_dns_enabled = "true"
+  private_dns_enabled = true
   security_group_ids = [aws_security_group.eks-vpc-security-group.id]
   service_name       = "com.amazonaws.eu-west-1.ec2"
   subnet_ids         = [aws_subnet.eks-vpc-subnet-1.id, aws_subnet.eks-vpc-subnet-2.id]
