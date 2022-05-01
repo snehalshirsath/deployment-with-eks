@@ -72,11 +72,11 @@ resource "aws_route_table" "eks-vpc-pubsubnet-4" {
   }
 }
 
-resource "aws_route_table_association" "bastion-host-route-table-association" {
+resource "aws_route_table_association" "pubsubnet-route-table-association" {
   subnet_id      = aws_subnet.eks-vpc-subnet-4.id
   route_table_id = aws_route_table.eks-vpc-pubsubnet-4.id
 }
 
-output "rtb-pub1" {
+output "rtb-pub2" {
   value = aws_route_table.eks-vpc-pubsubnet-4.id
 }
