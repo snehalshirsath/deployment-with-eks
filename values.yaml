@@ -18,7 +18,7 @@ secret:
   dockerconfigjson: ewoJImF1dGhzIjogewoJCSJodHRwczovL2luZGV4LmRvY2tlci5pby92MS8iOiB7CgkJCSJhdXRoIjogImMyNWxhR0ZzYzJocGNuTmhkR2c2VTI1bGFHRnNNVEl6TkRVPSIKCQl9Cgl9Cn0=
 
 service:
-  type: LoadBalancer
+  type: NodePort
   port: 9000
   targetPort: 9000
 
