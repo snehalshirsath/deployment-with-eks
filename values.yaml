@@ -1,0 +1,27 @@
+# Default values for machineinfo.
+# This is a YAML-formatted file.
+# Declare variables to be passed into your templates.
+
+name: machineinfo-app
+
+replicaCount: 1
+
+image: 
+  repository: snehalshirsath/machineinfo
+  tag: v9000
+  pullPolicy: IfNotPresent
+
+containerPort: 9000
+
+secret:
+  name: dockerSecret
+  dockerconfigjson: ewoJImF1dGhzIjogewoJCSJodHRwczovL2luZGV4LmRvY2tlci5pby92MS8iOiB7CgkJCSJhdXRoIjogImMyNWxhR0ZzYzJocGNuTmhkR2c2VTI1bGFHRnNNVEl6TkRVPSIKCQl9Cgl9Cn0=
+
+service:
+  type: LoadBalancer
+  port: 9000
+  targetPort: 9000
+
+
+
+
