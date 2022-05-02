@@ -25,5 +25,10 @@ service:
 ingress:
   path: /machineinfo
 
+serviceaccount:
+  name: aws-elb-svc
+  role:
+    arn: arn:aws:iam::799061643767:role/AWSLoadBalancerControllerIamRole
+
 
 
