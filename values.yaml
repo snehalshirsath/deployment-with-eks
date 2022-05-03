@@ -24,3 +24,9 @@ service:
 
 ingress:
   path: /machineinfo
+
+serviceaccount:
+  name: aws-load-balancer-controller
+  namespace: kube-system
+  role:
+    arn: arn:aws:iam::799061643767:role/AWSLoadBalancerControllerIamRole
