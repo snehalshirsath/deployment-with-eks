@@ -6,7 +6,7 @@ name: machineinfo-app
 
 replicaCount: 1
 
-image: 
+image:
   repository: snehalshirsath/machineinfo
   tag: v9000
   pullPolicy: IfNotPresent
@@ -24,11 +24,3 @@ service:
 
 ingress:
   path: /machineinfo
-
-serviceaccount:
-  name: aws-elb-svc
-  role:
-    arn: arn:aws:iam::799061643767:role/AWSLoadBalancerControllerIamRole
-
-
-
