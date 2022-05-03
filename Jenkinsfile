@@ -1,5 +1,5 @@
 pipeline {
-    agent { label 'jenkins-slave-backend-cd' }
+    agent { label 'kubepod' }
     stages {
         stage('Cloning') {
 				  steps {
