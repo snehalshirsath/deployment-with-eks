@@ -3,7 +3,7 @@ kind: Ingress
 metadata:
   name: {{ .Values.name }}-ingress
   annotations:
-    alb.ingress.kubernetes.io/scheme: internal
+    alb.ingress.kubernetes.io/scheme: internet-facing
 spec:
   ingressClassName: alb
   rules:
