@@ -12,7 +12,7 @@ pipeline {
 			    steps {
 				sh '''
           cd deployment-with-eks/
-          helm upgrade -i -f values.yaml machineinfo .
+          helm upgrade -i -f values.yaml machineinfo-v1 .
           '''
 				}
 				
