@@ -1,5 +1,5 @@
 pipeline {
-    agent { label 'kubepod' }
+    agent { label 'jenkins-ci' } //pod template label
     stages {
         stage('code checkout') {
 	  steps {
